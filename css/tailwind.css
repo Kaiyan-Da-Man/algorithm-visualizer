@@ -98,6 +98,10 @@
   --tw-backdrop-sepia:  
 }
 
+.tw-m-0 {
+  margin: 0px
+}
+
 .tw-mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem
@@ -155,8 +159,17 @@
   align-items: center
 }
 
+.tw-justify-center {
+  justify-content: center
+}
+
 .tw-justify-between {
   justify-content: space-between
+}
+
+.tw-bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
 .tw-bg-charcoal {
@@ -166,4 +179,8 @@
 
 .tw-p-0 {
   padding: 0px
+}
+
+.tw-text-center {
+  text-align: center
 }
