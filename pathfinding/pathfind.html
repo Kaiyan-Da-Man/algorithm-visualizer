@@ -7,73 +7,127 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/styles.css">
         <link rel="stylesheet" href="pathfind.css">
+        <link rel="stylesheet" href="../css/tailwind.css">
     </head>
 
     <body>
-        <!-- Top Bar -->
-        <div class="container-fluid">
-            <div class="row top-bar align-items-center">
-                <!-- Logo -->
-                <div class="col-auto text-start"><a href="../index.html"><img class="" src="../Assets/icon.png" width="50" aria-label="Logo"></a></div>
-                <!-- Title -->
-                <h1 class="col d-none d-sm-inline text" id="Header">Algorithm Visualizer</h1>
-                <!-- intro button -->
-                <img src="../Assets/info-circle.svg" height=30 width=30 class="col-auto gx-0 navbar-image ms-auto" data-bs-toggle="modal" data-bs-target="#introModal" aria-label="Info"/>
+        <div class="tw-flex tw-flex-col tw-h-dvh">
+            
+            <div id="top-bar"></div>
 
-                <!-- Settings Button -->
-                <div class="col-auto text-end">
-                    <svg xmlns="http://www.w3.org/2000/svg" height = 50 fill="white" class="justify-content-end btn" viewBox="0 0 16 16" type="button" data-bs-toggle="modal" data-bs-target="#settingModal">
-                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                    </svg>
+            <!-- Top Bar -->
+            <div class="tw-flex tw-justify-between tw-items-center tw-bg-charcoal tw-w-screen tw-h-[5dvh] tw-max-h-[5dvh]">
+                <!-- Logo -->
+                <a href="../index.html" class="tw-max-h-full tw-h-full"><img class="tw-max-h-full" src="../Assets/icon.png" aria-label="Logo"></a>
+                <!-- Title -->
+                <h1 class="d-none d-md-inline text tw-max-h-full" id="Header">Algorithm Visualizer</h1>
+                <div class="tw-flex tw-justify-between tw-items-center tw-w-32 tw-h-full">
+                    <!-- intro button -->
+                    <img src="../Assets/info-circle.svg" class="tw-h-full tw-cursor-pointer" data-bs-toggle="modal" data-bs-target="#introModal" aria-label="Info"/>
+                    <!-- Settings Button -->
+                    <img src="../Assets/gear.svg" class="tw-h-full tw-cursor-pointer" data-bs-toggle="modal" data-bs-target="#settingModal" aria-label="Info"/>
                 </div>
             </div>
-        </div>
 
-        <!-- Mobile menu -->
-        <div class="containerfluid d-md-none">
-            <div class="row menu-bar" style="margin: 0;">
-                <div class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#menuExpand" aria-expanded="false" aria-controls="menuExpand">
-                    Menu
-                </div>
-                <div class="collapse" id="menuExpand">
-                    <div class="row">
-                        <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#sortingExpand" aria-expanded="false" aria-controls="Sorting Expand">
-                            Sorting
-                        </div>
-                        <div class="collapse" id="sortingExpand">
-                            <div class="row">
-                               <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=insertionsort">Insertion Sort</a></button>
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=selectionsort">Selection Sort</a></button>
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=bubblesort">Bubble Sort</a></button>
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=quicksort">Quick Sort</a></button>
-                                </div> 
+            <!-- Mobile menu -->
+            <div class="containerfluid d-md-none">
+                <div class="row menu-bar" style="margin: 0;">
+                    <div class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#menuExpand" aria-expanded="false" aria-controls="menuExpand">
+                        Menu
+                    </div>
+                    <div class="collapse" id="menuExpand">
+                        <div class="row">
+                            <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#sortingExpand" aria-expanded="false" aria-controls="Sorting Expand">
+                                Sorting
                             </div>
-                        </div>
-                        <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#searchingExpand" aria-expanded="false" aria-controls="Searching Expand">
-                            Searching
-                        </div>
-                        <div class="collapse" id="searchingExpand">
-                            <div class="row">
-                               <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Searching/searching.html?func=linearsearch">Linear Search</a></button>
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Searching/searching.html?func=binarysearch"">Binary Search</a></button>
-                                </div> 
+                            <div class="collapse" id="sortingExpand">
+                                <div class="row">
+                                   <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=insertionsort">Insertion Sort</a></button>
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=selectionsort">Selection Sort</a></button>
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=bubblesort">Bubble Sort</a></button>
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Sorting/sorting.html?func=quicksort">Quick Sort</a></button>
+                                    </div> 
+                                </div>
                             </div>
-                        </div>
-                        <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#pathfindingExpand" aria-expanded="false" aria-controls="Pathfinding Expand">
-                            Pathfinding
-                        </div>
-                        <div class="collapse" id="pathfindingExpand">
-                            <div class="row">
-                               <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text AStar">A* Pathfinding</a></button>
-                                    <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text Djikstra">Djikstra's</a></button>
-                                </div> 
+                            <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#searchingExpand" aria-expanded="false" aria-controls="Searching Expand">
+                                Searching
+                            </div>
+                            <div class="collapse" id="searchingExpand">
+                                <div class="row">
+                                   <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Searching/searching.html?func=linearsearch">Linear Search</a></button>
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text" href="../Searching/searching.html?func=binarysearch">Binary Search</a></button>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="btn collapse-type-btn-menu" type="button" data-bs-toggle="collapse" data-bs-target="#pathfindingExpand" aria-expanded="false" aria-controls="Pathfinding Expand">
+                                Pathfinding
+                            </div>
+                            <div class="collapse" id="pathfindingExpand">
+                                <div class="row">
+                                   <div class="btn-group-vertical" role="group" aria-label="Sorting button group" style="padding: 0;">
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text AStar">A* Pathfinding</a></button>
+                                        <button type="button" class="btn collapse-algo-btn-menu"><a class="dropdown-item text Djikstra">Djikstra's</a></button>
+                                    </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Error Alert -->
+            <div id="alertContainer"></div>
+
+
+            <!-- Grid, dynamically filled in -->
+            <div class="tw-grow" id="grid-container">
+                            
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="tw-bg-charcoal tw-h-[5dvh] tw-max-h-[5dvh] tw-flex tw-items-center">
+                <div class="tw-flex tw-justify-between tw-items-center tw-h-full">
+                    <button id="generate" class="tw-max-h-full btn btn-orangeRed text" aria-label="Go">Go</button>
+                    <button id="cancel" class="tw-max-h-full btn btn-orangeRed text" style="display: none;" aria-label="Cancel">Cancel</button>
+                    <button id="reset" class="tw-max-h-full btn btn-orangeRed text" style="display: none;" aria-label="Reset">Reset</button>
+                    <button id="AnimSpeed" class="tw-max-h-full btn btn-orangeRed text" aria-label="Speed">1x</button>
+                    <button id="PlayPause" class="btn tw-p-0 tw-h-full tw-max-h-full tw-aspect-square" aria-label="Play/Pause"><img class="tw-h-full" src="../Assets/pause-fill.svg"/></button>
+                </div>
+                <div id="Progress-Bar-Outline" class="progress tw-grow tw-mx-2">
+                    <div id="Progress-Bar-Fill" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                </div>
+            
+                <!-- Sorting Dropdown -->
+                <div class="tw-max-h-full btn-group dropup">
+                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Sorting</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=insertionsort">Insertion Sort</a></li>
+                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=selectionsort">Selection Sort</a></li>
+                        <!-- <li><a class="dropdown-item" href="../Sorting/sorting.html?func=insertionsort">Merge Sort</a></li> -->
+                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=bubblesort">Bubble Sort</a></li>
+                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=quicksort">Quick Sort</a></li>
+                    </ul>
+                </div>
+            
+                <!-- Searching dropdown -->
+                <div class="tw-max-h-full btn-group dropup">
+                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Searching</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text" href="../Searching/searching.html?func=linearsearch">Linear Search</a></li>
+                        <li><a class="dropdown-item text" href="../Searching/searching.html?func=binarysearch">Binary Search</a></li>
+                    </ul>
+                </div>
+            
+                <!-- Pathfinding Dropdown -->
+                <div class="tw-max-h-full btn-group dropup">
+                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Pathfinding</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text AStar">A* Pathfinding</a></li>
+                        <li><a class="dropdown-item text Djikstra">Djikstra's</a></li>
+                        <li><a class="dropdown-item text JPS">Jump Point Search</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -190,16 +244,6 @@
             </div>
         </div>
 
-        <!-- Error Alert -->
-        <div id="alertContainer">
-            
-        </div>
-
-        <!-- Grid, dynamically filled in -->
-        <div id="grid-container">
-                            
-        </div>
-
         <!-- Draggable DIV -->
         <div class="card draggable" id="pseudocode">
             <div class="card-body card-body-draggable">
@@ -214,53 +258,6 @@
                 <p></p>
             </div>
             <div class="resizer"></div>
-        </div>
-
-        <!-- Bottom bar -->
-        <div class="bottom-bar container-fluid px-1">
-            <div class="row justify-content-center" style="margin: 0;">
-                <div class="d-flex col-auto gx-1 justify-content-end align-items-center">
-                    <button id="generate" class="btn btn-orangeRed text" aria-label="Go">Go</button>
-                    <button id="cancel" class="btn btn-orangeRed text" style="display: none;" aria-label="Cancel">Cancel</button>
-                    <button id="reset" class="btn btn-orangeRed text" style="display: none;" aria-label="Reset">Reset</button>
-                    <button id="AnimSpeed" class="btn btn-orangeRed text" aria-label="Speed">1x</button>
-                    <button id="PlayPause" class="controls gx-0" aria-label="Play/Pause"><img height=40 src="../Assets/pause-fill.svg"/></button>
-                </div>
-                <div id="Progress-Bar-Outline" class="progress col align-self-center gx-0">
-                    <div id="Progress-Bar-Fill" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-                </div>
-
-                <!-- Sorting Dropdown -->
-                <div class="btn-group dropup col-auto gx-0">
-                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-sm-block d-sm-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Sorting</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=insertionsort">Insertion Sort</a></li>
-                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=selectionsort">Selection Sort</a></li>
-                        <!-- <li><a class="dropdown-item" href="../Sorting/sorting.html?func=insertionsort">Merge Sort</a></li> -->
-                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=bubblesort">Bubble Sort</a></li>
-                        <li><a class="dropdown-item text" href="../Sorting/sorting.html?func=quicksort">Quick Sort</a></li>
-                    </ul>
-                </div>
-
-                <!-- Searching dropdown -->
-                <div class="btn-group dropup col-auto gx-0">
-                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-sm-block d-sm-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Searching</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item text" href="../Searching/searching.html?func=linearsearch">Linear Search</a></li>
-                        <li><a class="dropdown-item text" href="../Searching/searching.html?func=binarysearch">Binary Search</a></li>
-                    </ul>
-                </div>
-
-                <!-- Pathfinding Dropdown -->
-                <div class="btn-group dropup col-auto gx-0">
-                    <button type="button" class="btn btn-menu dropdown-toggle d-none d-sm-block d-sm-none d-md-block text" data-bs-toggle="dropdown" aria-expanded="false">Pathfinding</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item text AStar">A* Pathfinding</a></li>
-                        <li><a class="dropdown-item text Djikstra">Djikstra's</a></li>
-                        <li><a class="dropdown-item text JPS">Jump Point Search</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

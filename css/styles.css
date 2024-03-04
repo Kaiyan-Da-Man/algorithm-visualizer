@@ -31,6 +31,9 @@ img {
 
 .top-bar {
     background-color: var(--charcoal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bottom-bar {

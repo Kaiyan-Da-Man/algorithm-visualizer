@@ -15,6 +15,7 @@ class Table {
         this.elementTable = []
         this.cellSize = PathfindingCookies.GetCellSize()
         this.graph = new Graph()
+        this.displayArea = document.querySelector("#grid-container")
     }
 
     //generates a table based on the specs of the page
@@ -24,9 +25,9 @@ class Table {
         this.graph = new Graph()
 
         //Calculate new table dimensions
-        let { divisions: columns, cellSize: width } = DivideArea(window.innerWidth, this.cellSize)
-        let { divisions: rows, cellSize: height } = DivideArea(window.innerHeight, this.cellSize)
-
+        let { divisions: columns, cellSize: width } = DivideArea(this.displayArea.clientWidth, this.cellSize)
+        let { divisions: rows, cellSize: height } = DivideArea(this.displayArea.clientHeight, this.cellSize)
+        
         for(let y=0; y<rows; y++) {
             //Create new row
             this.elementTable.push([])
